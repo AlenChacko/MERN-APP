@@ -3,7 +3,10 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
 
+import connectDatabase from "./db/mongodb.js";
+
 dotenv.config();
+connectDatabase()
 
 const app = express();
 const port = process.env.PORT || 5000;
