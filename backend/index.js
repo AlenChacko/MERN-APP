@@ -4,6 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import connectDatabase from "./db/mongodb.js";
+import authRoute from "./routes/authRoute.js";
 
 dotenv.config();
 connectDatabase()
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(helmet());
+app.use('/api/auth',authRoute)
 
 const server = () => {
   app.listen(port, () => {
