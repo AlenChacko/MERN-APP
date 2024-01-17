@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 
 import { connectDatabase } from "./database/db.js";
+import authRoute from "./routes/authRoute.js";
 
 dotenv.config();
 connectDatabase()
@@ -15,6 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(helmet());
+
+app.use('/api/auth',authRoute)
 
 const server = () => {
   app.listen(port, () => {
